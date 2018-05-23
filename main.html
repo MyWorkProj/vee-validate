@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title></title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+<link rel="stylesheet" href="../public/css/bootstrap.min.css">
+<script src="../public/libs/jquery.min.js"></script>
+<script src="../public/libs/bootstrap.min.js"></script>
+<script src="../public/libs/vue.min.js"></script>
+<script src="../public/libs/vee-validate.js"></script>
+
+</head>
+<body>
+<div id="rrapp" v-cloak>
+	<div v-show="showAdd" class="panel panel-default">
+		<form class="form-horizontal" @submit.prevent="submitForm">
+		    <div v-show="showCode" class="form-group">
+                <div class="col-sm-2 control-label">企业登录账户</div>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control2" v-validate data-vv-rules="required|min:4|max:8" name="code" v-model="companyAccount.code" placeholder="企业登录账户"/>
+                  <p v-show="errors.has('code')" class="text-warning">{{ errors.first('code') }}</p>
+                </div>
+            </div>
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">企业appKey</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control2" name="appKey" v-validate data-vv-rules="required|max:32" v-model="companyAccount.appKey" placeholder="企业appKey"/>
+			      <p v-show="errors.has('appKey')" class="text-warning">{{ errors.first('appKey') }}</p>
+			    </div>
+			</div>
+				<div class="form-group">
+			   	<div class="col-sm-2 control-label">企业appSecret</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control2" name="appSecret" v-validate data-vv-rules="required|max:32" v-model="companyAccount.appSecret" placeholder="企业appSecret"/>
+			      <p v-show="errors.has('appSecret')" class="text-warning">{{ errors.first('appSecret') }}</p>
+			    </div>
+			</div>
+									<div class="form-group">
+			   	<div class="col-sm-2 control-label">企业简称</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control2" name="name" v-validate data-vv-rules="required|max:16" v-model="companyAccount.name" placeholder="企业简称"/>
+			      <p v-show="errors.has('name')" class="text-warning">{{ errors.first('name') }}</p>
+			    </div>                                                             
+			</div>
+			<div class="form-group">
+			   	<div class="col-sm-2 control-label">企业全称</div>
+			   	<div class="col-sm-10">
+			      <input type="text" class="form-control2" name="fullName" v-validate data-vv-rules="required|max:64" v-model="companyAccount.fullName" placeholder="企业全称"/>
+			      <p v-show="errors.has('fullName')" class="text-warning">{{ errors.first('fullName') }}</p>
+			    </div>                                                             
+			</div>
+									
+			<div class="form-group">
+				<div class="col-sm-2 control-label"></div> 
+				<input type="button" class="btn btn-primary" @click="submitForm" value="确定"/>
+				&nbsp;&nbsp;<input type="button" class="btn btn-warning" @click="reload" value="返回"/>
+			</div>
+		</form>
+    </div>
+</div>
+
+<script src="../public/js/company/main.js"></script>
+</body>
+</html>
